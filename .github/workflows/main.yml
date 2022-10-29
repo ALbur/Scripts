@@ -1,6 +1,7 @@
 
 name: Ubuntu
-on: [push]
+on: 
+  repository_dispatch:
 jobs:
   Ubuntu:
     runs-on: ubuntu-latest
