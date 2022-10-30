@@ -1,7 +1,8 @@
 name: Ubuntu
-on: 
+
+on:
   repository_dispatch:
-    workflow_dispatch:
+  workflow_dispatch:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
@@ -9,7 +10,8 @@ on:
         default: 'false'
 jobs:
   Ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    
     steps:
     - name: Setup Debug Session
       uses: csexton/debugger-action@master
