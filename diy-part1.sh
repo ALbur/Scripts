@@ -20,4 +20,4 @@ echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >
 echo 'src-git nas_istoreos https://github.com/istoreos/istoreos.git;main' >> feeds.conf.default
 echo 'src-git nas_istore https://github.com/linkease/istore.git;main' >> feeds.conf.default
 echo 'src-git nas_isp https://github.com/linkease/istore-packages.git;main' >> feeds.conf.default
-echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages.git;main' >> feeds.conf.default
+echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages.git;master' >> feeds.conf.default
