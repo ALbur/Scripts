@@ -95,11 +95,7 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-    - name: sed package
-      id: sed
-      run: |
-        cd openwrt/feeds/luci/collections/luci
-        sed -i 's/luci-theme-bootstrap/luci-theme-neobird/' Makefile
+
     - name: Compile the firmware
       id: compile
       run: |
