@@ -60,6 +60,7 @@ jobs:
       
     - name: Setup Debug Session
       uses: csexton/debugger-action@master
-    - name: Install wetransfer
+    
+    - name: upload
       run: cd openwrt && ./transfer wet -s -p 16 --no-progress .config
    
