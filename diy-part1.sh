@@ -17,9 +17,9 @@ sed -i '10s/^/#/' feeds.conf.default
 # Add a feed source
 #echo 'src-git argon https://github.com/jerrykuku/luci-theme-argon' >>feeds.conf.default
 echo 'src-git small https://github.com/kenzok8/small.git;master' >>feeds.conf.default
-echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
-echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >> feeds.conf.default
-echo 'src-git nas_istoreos https://github.com/istoreos/istoreos.git;main' >> feeds.conf.default
-echo 'src-git nas_istore https://github.com/linkease/istore.git;main' >> feeds.conf.default
-echo 'src-git nas_isp https://github.com/linkease/istore-packages.git;main' >> feeds.conf.default
+# echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
+# echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >> feeds.conf.default
+# echo 'src-git nas_istoreos https://github.com/istoreos/istoreos.git;main' >> feeds.conf.default
+# echo 'src-git nas_istore https://github.com/linkease/istore.git;main' >> feeds.conf.default
+# echo 'src-git nas_isp https://github.com/linkease/istore-packages.git;main' >> feeds.conf.default
 echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages.git;master' >> feeds.conf.default
