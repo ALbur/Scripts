@@ -24,3 +24,4 @@ echo 'src-git nas_istore https://github.com/linkease/istore.git;main' >> feeds.c
 echo 'src-git nas_isp https://github.com/linkease/istore-packages.git;main' >> feeds.conf.default
 echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages.git;master' >> feeds.conf.default
 echo 'src-git lede https://github.com/coolsnowwolf/lede.git;master' >>feeds.conf.default
+echo 'src-git ntfs3 https://github.com/xymopen/openwrt-ntfs3;master' >>feeds.conf.default
