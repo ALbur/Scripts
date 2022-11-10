@@ -25,5 +25,5 @@ echo 'src-git nas_isp https://github.com/linkease/istore-packages.git;main' >> f
 #echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages.git;master' >> feeds.conf.default
 echo 'src-git lede https://github.com/coolsnowwolf/lede.git;master' >>feeds.conf.default
 echo 'src-git ntfs3 https://github.com/xymopen/openwrt-ntfs3.git;master' >>feeds.conf.default
-# echo 'src-git netnasemusic https://github.com/maxlicheng/luci-app-unblockmusic.git;master' >>feeds.conf.default
+echo 'src-git netnasemusic https://github.com/maxlicheng/luci-app-unblockmusic.git;master' >>feeds.conf.default
 echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git;master' >>feeds.conf.default
