@@ -29,7 +29,7 @@ env:
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: true
+  UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
@@ -81,7 +81,12 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
+    
+    - name: cat .config part1
+      run: |
+        cd openwrt
+        cat .config
+        
     - name: SSH connection to Actions
       uses: csexton/debugger-action@master
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
@@ -95,10 +100,19 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-
+   
+    - name: cat .config before compile
+      run: |
+        cd openwrt
+        # 看哪些被依赖开启的 luci-app-xxx=y，由于 common 开启的就不管，不在列表的话就需要看看是哪些依赖
+        grep -P '^CONFIG_PACKAGE_luci-app-[^A-Z]*=y' .config
+        echo '-----👇------'
+        cat .config
+        
     - name: Compile the firmware
       id: compile
       run: |
+        ulimit -SHn 65000
         cd openwrt
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
@@ -106,7 +120,25 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-
+    
+    - name: retry with V=s in failed packages
+      if: (!cancelled())
+      run: |
+        cd openwrt
+        # 编译时间很早完成的话，make -v 看下 ERROR: package/feeds/routing/cjdns failed to build. 的编译错误信息
+        if [ -n "${{ secrets.gh_token }}" ];then
+          usedSec=$(( `date +%s` - `date -d "$createdAt" +%s`  ))
+          # 小于 5 小时构建完，此刻单独构建失败的
+          if [ $usedSec -lt $((4*60*60)) ];then
+            grep -Po 'ERROR:\s+\K\S+' /tmp/build.log || true
+            echo '-------------分割线-----------'
+            for pkg in `grep -Po 'ERROR:\s+\K\S+' /tmp/build.log`;do
+                echo "开始单独尝试 make $pkg/compile V=s 编译查看详细信息"
+                make $pkg/compile V=s || true
+            done
+          fi
+        fi
+    
     - name: Check space usage
       if: (!cancelled())
       run: df -hT
