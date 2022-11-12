@@ -1,4 +1,4 @@
-name: GC
+name: Linux
 
 on:
   repository_dispatch:
