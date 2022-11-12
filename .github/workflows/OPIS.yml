@@ -105,7 +105,8 @@ jobs:
       run: |
         cd openwrt
         # 看哪些被依赖开启的 luci-app-xxx=y，由于 common 开启的就不管，不在列表的话就需要看看是哪些依赖
-        grep -P '^CONFIG_PACKAGE_luci-app-[^A-Z]*=y' .config
+        #grep -P '^CONFIG_PACKAGE_luci-app-[^A-Z]*=y' .config
+        grep -P '^CONFIG_PACKAGE_[^A-Z]*=y' .config
         echo '-----👇------'
         cat .config
         
