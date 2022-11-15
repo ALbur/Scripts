@@ -27,5 +27,5 @@ echo 'src-git lede https://github.com/coolsnowwolf/lede.git;master' >>feeds.conf
 echo 'src-git ntfs3 https://github.com/xymopen/openwrt-ntfs3.git;master' >>feeds.conf.default
 echo 'src-git netnasemusic https://github.com/maxlicheng/luci-app-unblockmusic.git;master' >>feeds.conf.default
 #echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git;master' >>feeds.conf.default
-echo 'src-git RTL8153 https://github.com/shiqishao/RTL8153_RTL8153B_USB_linux_v2.16.1;main ' >>feeds.conf.default
+echo 'src-git RTL8153 https://github.com/shiqishao/RTL8153_RTL8153B_USB_linux_v2.16.1.git;main ' >>feeds.conf.default
 echo 'src-git lucie https://github.com/openwrt/luci.git' >>feeds.conf.default
