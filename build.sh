@@ -66,7 +66,7 @@ case "$BOARD" in
   	"MT1300" )
 		mt7621_sdk_get
 	;;
-	"8916" )
+	"MSM8916" )
 		msm8916_sdk_get
 	;;
 	*)
