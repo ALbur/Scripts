@@ -47,6 +47,10 @@ mt7621_sdk_get()
 {
 	 git clone https://github.com/gl-inet-builder/openwrt-sdk-ramips-1907.git  openwrt-sdk
 }
+msm8916_sdk_get()
+{
+	 git clone https://github.com/HandsomeMod/HandsomeMod.git  openwrt-sdk
+}
 
 case "$BOARD" in
 	"SF1200" |\
@@ -61,6 +65,9 @@ case "$BOARD" in
 	;;
   	"MT1300" )
 		mt7621_sdk_get
+	;;
+	"msm8916" )
+		msm8916_sdk_get
 	;;
 	*)
 esac
