@@ -12,6 +12,7 @@ on:
         - SF1200
         - SFT1200
         - MT1300
+        - MSM8916
       sourcecode:
         description: 'Source code URL'     
         required: true
