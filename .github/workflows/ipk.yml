@@ -1,3 +1,4 @@
+name: ipk
 on: 
   workflow_dispatch:
     inputs:
