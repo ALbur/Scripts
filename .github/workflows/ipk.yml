@@ -10,6 +10,7 @@ on:
         - MT2500
         - SF1200
         - SFT1200
+        - MT1300
       sourcecode:
         description: 'Source code URL'     
         required: true
