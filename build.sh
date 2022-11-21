@@ -81,7 +81,6 @@ cat feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 make defconfig
-ulimit -SHn 65000
 echo -e "$(nproc) thread compile"
 make -j$(nproc) || make -j1 || make -j1 V=s
 echo "::set-output name=status::success"
