@@ -19,12 +19,6 @@ on:
       pkgname:
         description: 'Openwrt package name'  
         required: true
-      email:
-        description: 'Git accuont email address'  
-        required: false
-      password:
-        description: 'Git account password'  
-        required: false
         
 jobs:
   setpackage:
@@ -39,8 +33,6 @@ jobs:
         SOURCECODEURL: ${{ github.event.inputs.sourcecode }}
         PKGNAME: ${{ github.event.inputs.pkgname }}
         BOARD: ${{ github.event.inputs.device }}
-        EMAIL: ${{ github.event.inputs.email }}
-        PASSWORD: ${{ github.event.inputs.password }}
       run: |
         cd $GITHUB_WORKSPACE
         chmod +x ./build.sh
