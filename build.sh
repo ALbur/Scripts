@@ -69,6 +69,12 @@ case "$BOARD" in
 esac
 
 cd openwrt
+case "$BOARD" in
+    "MSM8916" )
+	sed -i '10s/^/#/' feeds.conf.default
+	;;
+	*)
+esac
 sed -i "1i\src-link githubaction ${WORKDIR}/buildsource" feeds.conf.default
 
 ls -l
