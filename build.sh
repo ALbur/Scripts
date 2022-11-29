@@ -52,23 +52,18 @@ case "$BOARD" in
 	"SF1200" |\
 	"SFT1200" )
 		mips_siflower_sdk_get
-		echo CONFIG_ALL=y >.config
 	;;
 	"AXT1800" )
 		axt1800_sdk_get
-		echo CONFIG_ALL=y >.config
 	;;
 	"MT2500" )
 		mt7981_sdk_get
-		echo CONFIG_ALL=y >.config
 	;;
   	"MT1300" )
 		mt7621_sdk_get
-		echo CONFIG_ALL=y >.config
 	;;
 	"MSM8916" )
 		msm8916_sdk_get
-		echo CONFIG_ALL=y >.config
 	;;
 	*)
 esac
@@ -81,9 +76,9 @@ cat feeds.conf.default
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+echo CONFIG_ALL=y >.config
 make defconfig
-echo -e "$(nproc) thread compile"
-make -j$(nproc) || make -j1 || make -j1 V=s
-echo "::set-output name=status::success"
+make V=s ./package/feeds/githubaction/${PKGNAME}/compile
+
 find bin -type f -exec ls -lh {} \;
 find bin -type f -name "*.ipk" -exec cp -f {} "${WORKDIR}" \; 
