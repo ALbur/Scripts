@@ -43,7 +43,9 @@ mt7621_sdk_get()
 }
 msm8916_sdk_get()
 {
-	 git clone https://github.com/HandsomeMod/HandsomeMod.git  openwrt
+	 wget https://github.com/ALbur/HandsomeModSDK/releases/download/1.0/handsomemod-sdk-msm89xx-msm8916_gcc-8.4.0_musl.Linux-x86_64.tar.xz
+	 tar -xvf handsomemod-sdk-msm89xx-msm8916_gcc-8.4.0_musl.Linux-x86_64.tar.xz
+	 mkdir openwrt && mv handsomemod-sdk-msm89xx-msm8916_gcc-8.4.0_musl.Linux-x86_64/* openwrt/
 }
 
 case "$BOARD" in
@@ -66,8 +68,7 @@ case "$BOARD" in
 	;;
 	"MSM8916" )
 		msm8916_sdk_get
-		echo "CONFIG_PACKAGE_${PKGNAME}=m" >> ipk.config
-		mv ipk.config openwrt/.config
+		echo CONFIG_ALL=y >.config
 	;;
 	*)
 esac
