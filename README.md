@@ -4,3 +4,4 @@
 * sendPushdeer 获取自定义文件夹下最新txt文本 并通过pushdeer自建服务器推送 支持青龙 变量PUSH_KEY
 * Wishlist 打印输出亚马逊 wishlist列表
 * workflow openwrt
+* */1 * * * *   root    python3 /yourpath/msg.py forward && python3 /yourpath/msg.py clean
