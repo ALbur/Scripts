@@ -22,4 +22,5 @@ with open(path0, 'r') as f: # 获取日志内容
 content = str0 + str1 + str2 # 日志拼接
 
 pushdeer = PushDeer(server="http://xxxxx:8800", pushkey=push_key) # 自建pushdeer推送服务器
+# pushdeer = PushDeer(pushkey=push_key)  #默认服务器
 pushdeer.send_text(content)
