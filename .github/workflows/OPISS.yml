@@ -106,11 +106,7 @@ jobs:
         grep -P '^CONFIG_PACKAGE_[^A-Z]*=y' .config
         echo '-----👇------'
         cat .config
-    - name: replace
-      run: |
-        rm -r openwrt/package/kernel/mac80211/
-        unzip others/mac80211.zip
-        mv mac80211 openwrt/package/kernel/
+
     - name: Compile the firmware
       id: compile
       run: |
