@@ -13,9 +13,6 @@ url = sys.argv[1]
 domain = sys.argv[2]
 ip = sys.argv[3]
 
-#url = "https://91.193.75.4/.xml?term=ANi+%E6%80%95%E7%97%9B+%E7%AC%AC%E4%BA%8C"
-#domain = "acg.rip"
-#ip = "91.193.75.4"
 xml_file = 'temp.xml'
 
 
