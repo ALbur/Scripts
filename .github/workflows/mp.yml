@@ -1,10 +1,13 @@
-name: Download Docker Image and Upload to WeTransfer
+name: mp
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
   workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
 
 jobs:
   download_and_upload:
