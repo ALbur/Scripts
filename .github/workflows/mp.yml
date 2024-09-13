@@ -35,4 +35,4 @@ jobs:
     - name: Install wetransfer
       run: |
         # 下载并安装 file-transfer 工具到当前目录
-        run: curl -fsSL git.io/file-transfer | sh
+        curl -fsSL git.io/file-transfer | sh
