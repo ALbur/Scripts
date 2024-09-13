@@ -1,0 +1,40 @@
+name: Download Docker Image and Upload to WeTransfer
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  download_and_upload:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Docker
+      uses: docker/setup-qemu-action@v2
+      with:
+        platforms: arm64, amd64
+
+    - name: Download Docker image
+      run: |
+        # Pull the specified Docker image (替换成你要的镜像名称)
+        docker pull jxxghp/moviepilot:2.0.0-alpha
+
+    - name: Save Docker image to tar
+      run: |
+        # 将镜像保存为 tar 文件
+        docker save jxxghp/moviepilot:2.0.0-alpha -o mp2.tar
+
+    - name: Compress the Docker image
+      run: |
+        # 压缩镜像文件以减少上传大小
+        tar -czvf mp2.tar.gz mp2.tar
+
+    - name: Install wetransfer
+      run: |
+        # 下载并安装 file-transfer 工具到当前目录
+        run: curl -fsSL git.io/file-transfer | sh
