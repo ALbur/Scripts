@@ -36,3 +36,7 @@ jobs:
       run: |
         # 下载并安装 file-transfer 工具到当前目录
         curl -fsSL git.io/file-transfer | sh
+    - name: Upload to WeTransfer
+      run: |
+        # 使用 file-transfer 工具上传文件到 WeTransfer
+        ./transfer wet mp2.tar
